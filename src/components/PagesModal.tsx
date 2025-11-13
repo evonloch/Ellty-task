@@ -88,6 +88,7 @@ const PagesModal: React.FC<PagesModalProps> = ({
             minHeight: '64px',
         }}
         id="pages-modal-title"
+        
     >
         <Typography
             sx={{
@@ -105,6 +106,7 @@ const PagesModal: React.FC<PagesModalProps> = ({
             checked={allSelected}
             onChange={handleToggleAll}
             inputProps={{ 'aria-label': 'select all pages' }}
+            disableRipple           
             // custom empty icon that contains hover-image and pressed-image
             icon={
                 <Box
@@ -163,7 +165,7 @@ const PagesModal: React.FC<PagesModalProps> = ({
                         width: 23,
                         height: 23,
                         borderRadius: '6px',
-                        backgroundColor: '#9e9e9e',
+                        backgroundColor: '#2469F6',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -175,23 +177,24 @@ const PagesModal: React.FC<PagesModalProps> = ({
                 >
                     <Box
                         component="img"
-                        src="/images/check-checked.png"
+                        src="/icons/check.svg"
                         alt=""
                         className="checkedImg"
-                        sx={{ width: 16, height: 16, position: 'absolute' }}
+                        sx={{ 
+                          width: '15.64px',
+                          height: '11.04px',
+                          position: 'absolute',
+                        }}
                     />
                     <Box
                         component="img"
-                        src="/images/check-pressed.png"
+                        src="/icons/check.svg"
                         alt=""
                         className="checkedPressedImg"
-                        sx={{
-                            width: 16,
-                            height: 16,
-                            opacity: 0,
-                            transition: 'opacity 80ms ease, transform 80ms ease',
-                            transform: 'scale(0.98)',
-                            position: 'absolute',
+                        sx={{ 
+                          width: '15.64px',
+                          height: '11.04px',
+                          position: 'absolute',
                         }}
                     />
                 </Box>
@@ -200,8 +203,9 @@ const PagesModal: React.FC<PagesModalProps> = ({
                 padding: 0,
                 height: '23px',
                 width: '23px',
-                color: '#FFFFFF',
-                '&.Mui-checked': { color: '#9e9e9e' },
+                '& .MuiSvgIcon-root': {
+                    fontSize: 22,
+                },
                 // show the hover image only when hovering the checkbox root and tweak visuals
                 '&:hover': {
                     '.hoverImg': { opacity: 1, transform: 'scale(1)' },
@@ -217,16 +221,15 @@ const PagesModal: React.FC<PagesModalProps> = ({
                   '.pressedImg': { opacity: 1, transform: 'scale(1)' },
                   '.checkedPressedImg': { opacity: 1, transform: 'scale(1)' },
                   '.emptyIcon': {
-                    transform: 'scale(0.995)',
+                    transform: 'scale(1)',
                     border: '1.5px solid #bdbdbd',
                     // tight, compact blue glow matching the expected design
                     boxShadow: '0 0 0 2.3px rgba(147, 170, 228, 0.25), 0 0 8px rgba(147, 170, 228, 0.35)',
                     // boxShadow: '0 0 0 3px #eaf0fe #eaf0fe'
                   },
                   '.checkedIcon': {
-                    transform: 'scale(0.995)',
-                    // warm glow for checked pressed state
-                    boxShadow: '0 0 0 3px rgba(255, 206, 34, 0.2), 0 0 8px rgba(255, 206, 34, 0.3)',
+                    transform: 'scale(1)',
+                    boxShadow: '0 0 0 2.3px rgba(147, 170, 228, 0.25), 0 0 8px rgba(147, 170, 228, 0.35)',
                   },
                 },
                 // also show pressed image when the control has keyboard focus and user triggers (focus-visible helps keyboard)
@@ -234,29 +237,28 @@ const PagesModal: React.FC<PagesModalProps> = ({
                     '.pressedImg': { opacity: 1, transform: 'scale(1)' },
                     '.checkedPressedImg': { opacity: 1, transform: 'scale(1)' },
                     '.emptyIcon': {
-                        boxShadow: '0 0 0 3px rgba(147, 170, 228, 0.25), 0 0 8px rgba(147, 170, 228, 0.35)',
+                        boxShadow: '0 0 0 2.3px rgba(147, 170, 228, 0.25), 0 0 8px rgba(147, 170, 228, 0.35)',
                     },
                     '.checkedIcon': {
-                        boxShadow: '0 0 0 3px rgba(255, 206, 34, 0.2), 0 0 8px rgba(255, 206, 34, 0.3)',
+                         boxShadow: '0 0 0 2.3px rgba(147, 170, 228, 0.25), 0 0 8px rgba(147, 170, 228, 0.35)',
                     },
                 },
                 // when checked + hover, change checked background color
                 '&.Mui-checked:hover': {
                     '.checkedIcon': {
-                        backgroundColor: '#FFCE22',
-                        transform: 'scale(1.03)',
+                        backgroundColor: '#5087F8',
+                        transform: 'scale(1)',
                     },
+                    '.hoverImg' : { opacity: 1, transform: 'scale(1)'} 
                 },
                 // when checked + active (press), change checked pressed visuals
                 '&.Mui-checked:active': {
                     '.checkedIcon': {
-                        backgroundColor: '#FFD84D',
-                        transform: 'scale(0.98)',
+                        backgroundColor: '#2469F6', 
+                        transform: 'scale(1)',
                     },
                     '.checkedPressedImg': { opacity: 1, transform: 'scale(1)' },
-                },
-                '& .MuiSvgIcon-root': {
-                    fontSize: 22,
+                    '.hoverImg': { opacity: 1, transform: 'scale(1)' }
                 },
             }}
         />
