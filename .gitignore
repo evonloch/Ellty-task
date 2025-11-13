@@ -1,0 +1,44 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+
+# Build
+dist/
+build/
+.out/
+
+# Vite
+/.vite/
+
+# TypeScript
+*.tsbuildinfo
+
+# Env
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Misc
+coverage/
+*.local
+
+# Public assets (optional): keep icons tracked or ignore if you want to store them elsewhere
+# public/icons/
+
+# Mac desktop database
+.DS_Store
