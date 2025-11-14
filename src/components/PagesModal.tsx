@@ -68,23 +68,21 @@ const PagesModal = ({
             py: `${SPACING.row.paddingVertical}px`,
             height: `${SPACING.row.height}px`,
             cursor: 'pointer',
-            transition: 'background-color 0.15s ease',
-            '&:hover': {
-              backgroundColor: COLORS.background.hover,
-            },
             flexShrink: 0,
           }}
           onClick={handleToggleAll}
           {...headerInteraction.handlers}
         >
           <CustomTypography variant="header">{title}</CustomTypography>
-          <CustomCheckbox
-            checked={allSelected}
-            onChange={handleToggleAll}
-            ariaLabel="select all pages"
-            isHovering={headerInteraction.isHovering}
-            isPressed={headerInteraction.isPressed}
-          />
+          <Box onClick={(e) => e.stopPropagation()}>
+            <CustomCheckbox
+              checked={allSelected}
+              onChange={() => handleToggleAll()}
+              ariaLabel="select all pages"
+              isHovering={headerInteraction.isHovering}
+              isPressed={headerInteraction.isPressed}
+            />
+          </Box>
         </Box>
 
         <Divider

@@ -19,25 +19,28 @@ const rowStyles: SxProps = {
   py: `${SPACING.row.paddingVertical}px`,
   height: `${SPACING.row.height}px`,
   cursor: 'pointer',
-  transition: 'background-color 0.15s ease',
-  '&:hover': {
-    backgroundColor: COLORS.background.hover,
-  },
+  
 }
 
 const PageRow = ({ label, checked, onToggle }: PageRowProps) => {
   const { isHovering, isPressed, handlers } = useRowInteraction()
 
+  const handleCheckboxChange = (checked: boolean) => {
+    onToggle()
+  }
+
   return (
     <Box onClick={onToggle} sx={rowStyles} {...handlers}>
       <CustomTypography variant="pageItem">{label}</CustomTypography>
-      <CustomCheckbox
-        checked={checked}
-        onChange={onToggle}
-        ariaLabel={`checkbox-${label}`}
-        isHovering={isHovering}
-        isPressed={isPressed}
-      />
+      <Box onClick={(e) => e.stopPropagation()}>
+        <CustomCheckbox
+          checked={checked}
+          onChange={handleCheckboxChange}
+          ariaLabel={`checkbox-${label}`}
+          isHovering={isHovering}
+          isPressed={isPressed}
+        />
+      </Box>
     </Box>
   )
 }
