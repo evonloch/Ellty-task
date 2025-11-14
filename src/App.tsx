@@ -14,9 +14,7 @@ const DEMO_PAGES: PageItem[] = [
 
 const App = () => {
   const handleDone = (selected: string[]) => {
-    if (selected.length > 0) {
-      alert(`Selected pages: ${selected.join(', ')}`)
-    }
+    console.log('Selected page IDs:', selected)
   }
 
   return (
