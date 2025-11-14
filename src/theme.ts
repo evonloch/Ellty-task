@@ -1,17 +1,17 @@
 import { createTheme } from '@mui/material/styles'
+import { COLORS } from './constants/colors'
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FDD835',
-      contrastText: '#000',
+      main: COLORS.primary.main,
+      contrastText: COLORS.text.secondary,
     },
     background: {
-      default: '#ffffff',
-      paper: '#fff',
+      default: COLORS.background.card,
+      paper: COLORS.background.card,
     },
   },
-  
   components: {
     MuiButton: {
       styleOverrides: {

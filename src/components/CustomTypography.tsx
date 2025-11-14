@@ -1,15 +1,11 @@
-import React from 'react'
 import { Typography, TypographyProps } from '@mui/material'
+import { TYPOGRAPHY, COLORS } from '../constants/colors'
 
 export interface CustomTypographyProps extends Omit<TypographyProps, 'variant'> {
   variant?: 'header' | 'pageItem' | 'button'
   children: React.ReactNode
 }
 
-/**
- * CustomTypography
- * Centralized typography component with predefined styles
- */
 const CustomTypography: React.FC<CustomTypographyProps> = ({
   variant = 'pageItem',
   children,
@@ -17,27 +13,27 @@ const CustomTypography: React.FC<CustomTypographyProps> = ({
   ...props
 }) => {
   const baseStyle = {
-    fontFamily: '"Montserrat", monospace',
-    fontWeight: 400,
+    fontFamily: TYPOGRAPHY.fontFamily,
+    fontWeight: TYPOGRAPHY.fontWeight.regular,
     fontStyle: 'normal',
-    lineHeight: 1.3,
-    letterSpacing: '0px',
-    verticalAlign: 'middle' as const,
-    color: '#1F2128',
-  }
+    lineHeight: TYPOGRAPHY.lineHeight,
+    letterSpacing: TYPOGRAPHY.letterSpacing,
+    verticalAlign: 'middle',
+    color: COLORS.text.primary,
+  } as const
 
   const variantStyles = {
     header: {
       ...baseStyle,
-      fontSize: '14px',
+      fontSize: TYPOGRAPHY.fontSize.small,
     },
     pageItem: {
       ...baseStyle,
-      fontSize: '14px',
+      fontSize: TYPOGRAPHY.fontSize.small,
     },
     button: {
       ...baseStyle,
-        fontSize: '14px',
+      fontSize: TYPOGRAPHY.fontSize.small,
     },
   }
 
