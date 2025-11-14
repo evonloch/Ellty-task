@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FDD835', // yellow/golden
+      main: '#FDD835',
       contrastText: '#000',
     },
     background: {
@@ -11,6 +11,7 @@ const theme = createTheme({
       paper: '#fff',
     },
   },
+  
   components: {
     MuiButton: {
       styleOverrides: {

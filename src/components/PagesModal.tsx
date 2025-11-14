@@ -3,9 +3,9 @@ import {
   Box,
   Button,
   Divider,
-  Typography,
 } from '@mui/material'
 import CustomCheckbox from './CustomCheckbox'
+import CustomTypography from './CustomTypography'
 
 export type PageItem = {
   id: string
@@ -73,28 +73,34 @@ const PagesModal: React.FC<PagesModalProps> = ({
     >
       <Box
         sx={{
-          width: 460,
+          width: '370px',
           maxWidth: '90vw',
-          borderRadius: '16px',
-          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.08)',
-          overflow: 'hidden',
+          borderRadius: '6px',
+          border: '1px solid #EEEEEE',
+          boxShadow: '0px 8px 15px 0px #1414141F, 0px 0px 4px 0px #1414141A',
           backgroundColor: '#fff',
+          display: 'flex',
+          flexDirection: 'column',
+          height: 'auto',
+          py: '10px'
         }}
       >
-      {/* Header with "All pages" and checkbox */}
+      {/* Header with "All pages" and checkbox - FIXED, NOT SCROLLABLE */}
     <Box
         sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            px: 3,
-            py: 2.5,
-            minHeight: '64px',
+            pl: "22px",
+            pr: "15px",
+            py: "8px",
+            height: "42px",
             cursor: 'pointer',
             transition: 'background-color 0.15s ease',
             '&:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.01)',
             },
+            flexShrink: 0, // prevent shrinking
         }}
         id="pages-modal-title"
         onMouseEnter={() => setHeaderIsHovering(true)}
@@ -106,16 +112,9 @@ const PagesModal: React.FC<PagesModalProps> = ({
         onMouseUp={() => setHeaderIsPressed(false)}
         onClick={() => handleToggleAll()}
     >
-        <Typography
-            sx={{
-                fontSize: '16px',
-                fontWeight: 400,
-                color: '#000',
-                letterSpacing: '-0.01em',
-            }}
-        >
+        <CustomTypography variant="header">
             {title}
-        </Typography>
+        </CustomTypography>
 
         {/* Header checkbox: All pages */}
         <CustomCheckbox
@@ -127,13 +126,21 @@ const PagesModal: React.FC<PagesModalProps> = ({
         />
     </Box>
 
-      <Divider sx={{ borderColor: '#f0f0f0' }} />
+      <Divider
+        sx={{
+          mx: '15px',
+          my: '10px',
+          borderColor: '#e6e5e5ff',
+          borderBottomWidth: '0.7px',
+        }}
+      />
 
-      {/* Page items list - scrollable without visible scrollbar */}
+      {/* Page items list - ONLY THIS IS SCROLLABLE */}
       <Box
         sx={{
-          maxHeight: '384px', // height for ~6 items (64px per item)
+          height: '160px',
           overflowY: 'auto',
+          flex: '1 1 auto',
           /* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
           '&::-webkit-scrollbar': {
             display: 'none',
@@ -164,9 +171,10 @@ const PagesModal: React.FC<PagesModalProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  px: 3,
-                  py: 2.5,
-                  minHeight: '64px',
+                  pl: "22px",
+                  pr: "15px",
+                  py: "8px",
+                  height: "42px",
                   cursor: 'pointer',
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
@@ -174,16 +182,9 @@ const PagesModal: React.FC<PagesModalProps> = ({
                   },
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: '16px',
-                    fontWeight: 400,
-                    color: '#000',
-                    letterSpacing: '-0.01em',
-                  }}
-                >
+                <CustomTypography variant="pageItem">
                   {p.label}
-                </Typography>
+                </CustomTypography>
                 <CustomCheckbox
                   checked={checked}
                   onChange={(isChecked) => {
@@ -199,14 +200,25 @@ const PagesModal: React.FC<PagesModalProps> = ({
                   isPressed={rowIsPressed}
                 />
               </Box>
-              <Divider sx={{ borderColor: '#f0f0f0' }} />
+              {/* <Divider sx={{ borderColor: '#f0f0f0' }} /> */}
             </Box>
           )
         })}
       </Box>
 
-      {/* Done button */}
-      <Box sx={{ px: '20px', pt: '20px', pb: '20px' }}>
+      <Divider
+        sx={{
+          mx: '15px',
+          my: '10px',
+          borderColor: '#e6e5e5ff',
+          borderBottomWidth: '0.7px',
+        }}
+      />
+
+      {/* Done button - FIXED, NOT SCROLLABLE */}
+      <Box sx={{ px: '15px', pt: "10px", pb: "10px", flexShrink: 0 }}>
+      
+
         <Button
           variant="contained"
           onClick={handleDone}
@@ -219,7 +231,7 @@ const PagesModal: React.FC<PagesModalProps> = ({
             fontSize: '16px',
             fontWeight: 500,
             px: '20px',
-            py: '10px',
+            
             textTransform: 'none',
             borderRadius: '4px',
             boxShadow: 'none',

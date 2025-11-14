@@ -39,7 +39,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
           sx={{
             width: 23,
             height: 23,
-            border: isHovering ? '1.5px solid #bdbdbd' : '1.595px solid #e7e1e1cc',
+            border: isHovering ? '1.5px solid #bdbdbd' : '1.595px solid #e1e1e1',
             borderRadius: '6px',
             display: 'flex',
             alignItems: 'center',
