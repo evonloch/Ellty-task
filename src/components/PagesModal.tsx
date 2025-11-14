@@ -1,6 +1,6 @@
 import { Box, Button, Divider } from '@mui/material'
 import CustomCheckbox from './CustomCheckbox'
-import CustomTypography from './CustomTypography'
+import CustomTypography, { baseStyle } from './CustomTypography'
 import PageRow from './PageRow'
 import { COLORS, SPACING } from '../constants/colors'
 import { usePageSelection } from '../hooks/usePageSelection'
@@ -130,18 +130,17 @@ const PagesModal = ({
             variant="contained"
             onClick={handleDoneClick}
             fullWidth
+            disableRipple
             aria-label="Done"
             sx={{
               height: `${SPACING.button.height}px`,
               backgroundColor: COLORS.primary.main,
-              color: COLORS.text.secondary,
-              fontSize: '16px',
-              fontWeight: 500,
+              ...baseStyle,
               px: '20px',
               textTransform: 'none',
               borderRadius: `${SPACING.button.borderRadius}px`,
               boxShadow: 'none',
-              transition: 'background-color 0ms',
+              transition: 'none',
               '&:hover': {
                 backgroundColor: COLORS.primary.hover,
                 boxShadow: 'none',

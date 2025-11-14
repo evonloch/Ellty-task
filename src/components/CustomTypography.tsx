@@ -5,14 +5,7 @@ export interface CustomTypographyProps extends Omit<TypographyProps, 'variant'> 
   variant?: 'header' | 'pageItem' | 'button'
   children: React.ReactNode
 }
-
-const CustomTypography: React.FC<CustomTypographyProps> = ({
-  variant = 'pageItem',
-  children,
-  sx = {},
-  ...props
-}) => {
-  const baseStyle = {
+export const baseStyle = {
     fontFamily: TYPOGRAPHY.fontFamily,
     fontWeight: TYPOGRAPHY.fontWeight.regular,
     fontStyle: 'normal',
@@ -20,7 +13,16 @@ const CustomTypography: React.FC<CustomTypographyProps> = ({
     letterSpacing: TYPOGRAPHY.letterSpacing,
     verticalAlign: 'middle',
     color: COLORS.text.primary,
+    fontSize: TYPOGRAPHY.fontSize.small,
   } as const
+  
+const CustomTypography: React.FC<CustomTypographyProps> = ({
+  variant = 'pageItem',
+  children,
+  sx = {},
+  ...props
+}) => {
+  
 
   const variantStyles = {
     header: {
